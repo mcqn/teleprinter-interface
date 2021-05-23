@@ -252,12 +252,15 @@ void setup()
     sendCharacter('l');
     sendCharacter('d');
     sendCharacter('?');
-    while(1) { delay(100); };
 #endif
 }
 
 void loop()
 {
+    if (Serial.available())
+    {
+        sendCharacter(Serial.read());
+    }
     if (digitalRead(kPinTransferContacts) != gInputMark) {
         // It's changed state
         gInputMark = !gInputMark;
