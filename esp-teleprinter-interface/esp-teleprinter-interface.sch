@@ -1,0 +1,149 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:+15V #PWR?
+U 1 1 60A91408
+P 2500 1750
+F 0 "#PWR?" H 2500 1600 50  0001 C CNN
+F 1 "+15V" H 2515 1923 50  0000 C CNN
+F 2 "" H 2500 1750 50  0001 C CNN
+F 3 "" H 2500 1750 50  0001 C CNN
+	1    2500 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A91FA9
+P 2850 2450
+F 0 "#PWR?" H 2850 2200 50  0001 C CNN
+F 1 "GND" H 2855 2277 50  0000 C CNN
+F 2 "" H 2850 2450 50  0001 C CNN
+F 3 "" H 2850 2450 50  0001 C CNN
+	1    2850 2450
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:-15V #PWR?
+U 1 1 60A923CA
+P 2500 3100
+F 0 "#PWR?" H 2500 3200 50  0001 C CNN
+F 1 "-15V" H 2515 3273 50  0000 C CNN
+F 2 "" H 2500 3100 50  0001 C CNN
+F 3 "" H 2500 3100 50  0001 C CNN
+	1    2500 3100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x04 J?
+U 1 1 60A93237
+P 1400 2450
+F 0 "J?" H 1318 2767 50  0000 C CNN
+F 1 "Teleprinter Connections" H 1318 2676 50  0000 C CNN
+F 2 "" H 1400 2450 50  0001 C CNN
+F 3 "~" H 1400 2450 50  0001 C CNN
+	1    1400 2450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 60A93C76
+P 4900 2350
+F 0 "J?" H 4980 2342 50  0000 L CNN
+F 1 "ESP Out" H 4980 2251 50  0000 L CNN
+F 2 "" H 4900 2350 50  0001 C CNN
+F 3 "~" H 4900 2350 50  0001 C CNN
+	1    4900 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:PN2222A Q?
+U 1 1 60A94B24
+P 3750 2850
+F 0 "Q?" H 3941 2896 50  0000 L CNN
+F 1 "PN2222A" H 3941 2805 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3950 2775 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/PN2222-D.PDF" H 3750 2850 50  0001 L CNN
+	1    3750 2850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:BC327 Q?
+U 1 1 60A961DD
+P 3750 2050
+F 0 "Q?" H 3941 2004 50  0000 L CNN
+F 1 "BC327" H 3941 2095 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3950 1975 50  0001 L CIN
+F 3 "http://www.onsemi.com/pub_link/Collateral/BC327-D.PDF" H 3750 2050 50  0001 L CNN
+	1    3750 2050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2850 2450 4700 2450
+Wire Wire Line
+	2850 2450 1600 2450
+Connection ~ 2850 2450
+Wire Wire Line
+	1600 2350 2050 2350
+Wire Wire Line
+	2050 2350 2050 1750
+Wire Wire Line
+	2050 1750 2500 1750
+Wire Wire Line
+	1600 2550 2050 2550
+Wire Wire Line
+	2050 2550 2050 3100
+Wire Wire Line
+	2050 3100 2500 3100
+Wire Wire Line
+	3650 3050 3650 3100
+Wire Wire Line
+	3650 3100 2500 3100
+Connection ~ 2500 3100
+$Comp
+L Device:R_Small R?
+U 1 1 60A9F270
+P 4400 2350
+F 0 "R?" V 4204 2350 50  0000 C CNN
+F 1 "R_Small" V 4295 2350 50  0000 C CNN
+F 2 "" H 4400 2350 50  0001 C CNN
+F 3 "~" H 4400 2350 50  0001 C CNN
+	1    4400 2350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4700 2350 4500 2350
+Wire Wire Line
+	4300 2350 4150 2350
+Wire Wire Line
+	4150 2350 4150 2850
+Wire Wire Line
+	4150 2850 3950 2850
+Wire Wire Line
+	2500 1750 3650 1750
+Wire Wire Line
+	3650 1750 3650 1850
+Connection ~ 2500 1750
+Wire Wire Line
+	3950 2050 4150 2050
+Wire Wire Line
+	4150 2050 4150 2350
+Connection ~ 4150 2350
+Wire Wire Line
+	3650 2250 3650 2650
+Wire Wire Line
+	3650 2650 1600 2650
+Connection ~ 3650 2650
+$EndSCHEMATC
