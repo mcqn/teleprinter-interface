@@ -3,6 +3,10 @@
 
 const int kPinTransferContacts = 5;
 const int kPinInternetToTeleprinter = LED_BUILTIN;
+// To use a single +15V supply (rather than a +/-15V supply) and an L293D motor driver
+// we can treat the teleprinter as a bi-directional "motor"
+const int kPinMotor1A = 7;
+const int kPinMotor2A = 8;
 const int kPinTransferContactIndicator = LED_BUILTIN;
 
 bool gInputMark = false;
@@ -153,11 +157,22 @@ const uint8_t kAsciiToBaudotTable[128] {
 
 uint8_t gOutputMode = kLettersModifier;
 
-void transmitSpace() { Serial.print("S"); digitalWrite(kPinInternetToTeleprinter, LOW); }
-void transmitMark() { Serial.print("M"); digitalWrite(kPinInternetToTeleprinter, HIGH); }
+void transmitSpace() 
+{
+  Serial.print("S");
+  digitalWrite(kPinInternetToTeleprinter, LOW);
+  digitalWrite(kPinMotor1A, LOW);
+  digitalWrite(kPinMotor2A, HIGH);
+}
+void transmitMark() {
+  Serial.print("M");
+  digitalWrite(kPinInternetToTeleprinter, HIGH);
+  digitalWrite(kPinMotor1A, HIGH);
+  digitalWrite(kPinMotor2A, LOW);
+}
 // Because we need to send 1.5 stop bits, we'll define a "half-bit" pause
 // and then send two when we we're sending a bit and three when sending 1.5 bits
-void transmitSemiPause() { delay(1000/50*2); }
+void transmitSemiPause() { delay(1000/(50*2)); }
 
 // Transmit a 5-bit baudot code
 void sendCode(char aCode)
@@ -233,6 +248,8 @@ void setup()
     pinMode(kPinTransferContacts, INPUT);
     pinMode(kPinTransferContactIndicator, OUTPUT);
     pinMode(kPinInternetToTeleprinter, OUTPUT);
+    pinMode(kPinMotor1A, OUTPUT);
+    pinMode(kPinMotor2A, OUTPUT);
 
     Serial.begin(115200);
     delay(200);
